@@ -11,7 +11,6 @@ const cleanNumber = (cardNumber: string): string => cardNumber
 
 export const ValidateCard = () => {
   const [cardNumber, setCardNumber] = useState('');
-
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,6 +34,9 @@ export const ValidateCard = () => {
     try {
       const response = await POSTCardValidate({ cardNumber: rawNumber });
       setIsValid(response.valid);
+      if (response.error) {
+        setError("Validation failed to run. Please try again.");
+      }
     } catch (err) {
       console.error(err);
       setError('Failed to validate card.');
@@ -77,11 +79,11 @@ export const ValidateCard = () => {
           />
           {isValid !== null && (
             <Alert 
-              severity={isValid ? 'success' : 'error'} 
+              severity={isValid && !error ? 'success' : 'error'} 
               onClose={handleCloseAlert} 
               aria-live="polite"
             >
-              {isValid ? 'Card is valid!' : 'Card is not valid.'}
+              {error ? error : (isValid ? 'Card is valid!' : 'Card is not valid.')}
             </Alert>
           )}
           <StackRow gap={1} justifyContent="end">

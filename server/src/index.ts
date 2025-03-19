@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import path from 'path';
 
 import { validateCardNumber } from './card-validator';
 
@@ -14,8 +15,9 @@ app.use(cors({ origin: '*' }));
 
 app.use(express.json()); // Ensure JSON requests are parsed
 
+app.use(express.static(path.join(__dirname, './public')));
 app.get('/', (req: Request, res: Response) => {
-  res.send('ok');
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 interface CardValidateInput {

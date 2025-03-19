@@ -10,5 +10,5 @@ logs/
 .gitignore
 
 # Build artifacts
-dist/
-build/
+*/**/dist/
+*/**/build/

@@ -1,4 +1,4 @@
-import { validateCardNumber } from '../src/card-validator';
+import { validateCardNumber } from '../card-validator';
 
 describe('Luhn Algorithm Validator', () => {
   it('should return true for a valid card number', () => {
