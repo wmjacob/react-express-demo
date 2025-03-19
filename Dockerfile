@@ -26,4 +26,4 @@ COPY server/package*.json ./server/
 EXPOSE 8080
 
 # Start the server
-CMD ["node", "server/dist/main.js"]
+CMD ["node", "server/dist/index.js"]
