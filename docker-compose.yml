@@ -1,0 +1,32 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: server
+    working_dir: /app/server
+    command: ["npm", "start"]
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app/server
+      - node_modules:/app/server/node_modules
+    environment:
+      - NODE_ENV=development
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: client-build
+    working_dir: /app/client
+    command: ["npm", "start"]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app/client
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  node_modules:

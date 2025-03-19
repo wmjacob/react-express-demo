@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Build artifacts
+dist/
+build/
