@@ -29,7 +29,7 @@ interface CardValidateOutput {
   error: string;
 }
 
-app.post('/card/validate', (req: Request<unknown, unknown, CardValidateInput>, res: Response<CardValidateOutput>) => {
+app.post('/api/validate', (req: Request<unknown, unknown, CardValidateInput>, res: Response<CardValidateOutput>) => {
   const { cardNumber } = req.body;
   if (!cardNumber) {
     res.status(400).json({ valid: true, error: 'Card number is required' });

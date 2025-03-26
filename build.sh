@@ -1,6 +1,8 @@
 # Extract version from package.json
 version=$(grep '"version":' server/package.json | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
 
+DOCKER_IMAGE="react-express";
+
 # Build the Docker image
 docker build -t $DOCKER_IMAGE:${version} .
 

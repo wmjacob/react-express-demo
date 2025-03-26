@@ -9,7 +9,7 @@ export interface CardValidateOutput {
 
 export const POSTCardValidate = async ({ cardNumber }: CardValidateInput): Promise<any> => {
     try {
-      const response = await fetch('http://localhost:8080/card/validate', {
+      const response = await fetch('/api/validate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
